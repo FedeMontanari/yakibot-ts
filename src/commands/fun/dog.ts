@@ -1,7 +1,7 @@
 import { SlashCommandBuilder, CommandInteraction } from "discord.js";
 import DogEmbedBuilder from "../../utils/dogEmbedBuilder";
 
-const { DOG_KEY } = process.env;
+const { DOG_API } = process.env;
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -11,7 +11,8 @@ module.exports = {
     await interaction.deferReply({ ephemeral: false });
 
     const headers = new Headers({
-      "x-api-key": DOG_KEY || "",
+      "x-api-key": DOG_API!,
+      "Content-Type": "application/json",
     });
 
     const requestOptions = {
@@ -30,7 +31,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      return await interaction.editReply("૮ ⚆ﻌ⚆ა OH NO! An error ocurred.");
+      return await interaction.editReply("૮ ⚆ﻌ⚆ა OH NOES! An error ocurred.");
     }
   },
 };

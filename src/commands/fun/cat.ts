@@ -12,7 +12,7 @@ module.exports = {
 
     const headers = new Headers({
       "Content-Type": "application/json",
-      "x-api-key": CAT_API || "",
+      "x-api-key": CAT_API!,
     });
 
     const requestOptions = {
